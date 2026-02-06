@@ -1,0 +1,259 @@
+:root {
+  --kurenai-hi: #8B1E1E;
+  /* User Red */
+  --konjo: #0A0404;
+  /* Deep Warm Black */
+  --gold: #F4C41A;
+  /* User Gold */
+  --sakura: #EE8D9E;
+  /* User Pink */
+  --sumi-iro: #050505;
+  /* Black */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cinzel', serif;
+}
+
+body {
+  background-color: var(--sumi-iro);
+  overflow: hidden;
+  color: var(--gold);
+}
+
+.home-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* BACKGROUND & PARALLAX */
+.background-layers {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.layer-base {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a1a1a 0%, var(--sumi-iro) 100%);
+}
+
+.layer-japanese-decor {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  background-image: url('https://www.transparenttextures.com/patterns/oriental-tiles.png');
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* SAKURA: CAÍDA EXTREMADAMENTE LENTA Y FLOTANTE */
+.sakura-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sakura-petal {
+  position: absolute;
+  top: -10%;
+  width: 10px;
+  height: 8px;
+  background: var(--sakura);
+  border-radius: 100% 0 100% 0;
+  filter: blur(0.2px);
+
+  animation-name: floating-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  will-change: transform;
+}
+
+@keyframes floating-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg) scale(var(--scale));
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(45vh) translateX(120px) rotate(200deg) scale(var(--scale));
+  }
+
+  100% {
+    transform: translateY(105vh) translateX(-120px) rotate(360deg) scale(var(--scale));
+    opacity: 0;
+  }
+}
+
+/* HUD PRINCIPAL */
+.main-hud {
+  position: relative;
+  width: 90%;
+  max-width: 850px;
+  padding: 80px 40px;
+  background: rgba(10, 4, 4, 0.9);
+  border: 1px solid rgba(244, 196, 26, 0.3);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(15px);
+  text-align: center;
+}
+
+.logo-hex-border {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid var(--kurenai-hi);
+  transform: rotate(45deg);
+  margin-bottom: 40px;
+  background: var(--sumi-iro);
+  box-shadow: 0 0 15px var(--kurenai-hi);
+}
+
+.logo-text {
+  width: 60px;
+  height: 60px;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--kurenai-hi);
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.brand-name {
+  display: inline-block;
+  background: linear-gradient(to bottom, #fff, var(--kurenai-hi));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+}
+
+/* BOTONES RPG */
+.cta-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-rpg {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-inner {
+  display: block;
+  padding: 16px 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.btn-enter .btn-inner {
+  background: var(--kurenai-hi);
+  color: white;
+  box-shadow: 0 4px 0 #5a191a;
+}
+
+.btn-ranks .btn-inner {
+  background: var(--konjo);
+  color: var(--gold);
+  box-shadow: 0 4px 0 #050202;
+}
+
+.btn-rpg:hover .btn-inner {
+  transform: translateY(-4px);
+  filter: brightness(1.2);
+}
+
+/* CORNERS */
+.hud-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--kurenai-hi);
+}
+
+.top-l {
+  top: 15px;
+  left: 15px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.top-r {
+  top: 15px;
+  right: 15px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.bot-l {
+  bottom: 15px;
+  left: 15px;
+  border-right: none;
+  border-top: none;
+}
+
+.bot-r {
+  bottom: 15px;
+  right: 15px;
+  border-left: none;
+  border-top: none;
+}
+
+.server-status {
+  position: absolute;
+  bottom: 40px;
+}
+
+.online-pill {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #00ff00;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 10px #00ff00;
+}

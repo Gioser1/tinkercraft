@@ -1,0 +1,167 @@
+/* 🔹 Imports al inicio */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap");
+
+/* 🔹 Página completa */
+.rangos-page {
+  min-height: 100vh;
+  padding: 80px 6%;
+  background: radial-gradient(circle at top, #0b0f16, #05070c);
+  font-family: "Poppins", sans-serif;
+  color: #d4c2ad;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔹 Fondo patrón japonés sutil */
+.rangos-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/img/textures/japanese-pattern.png");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* 🔹 Header de la página */
+.rangos-header {
+  text-align: center;
+  margin-bottom: 60px;
+  z-index: 1;
+  position: relative;
+}
+
+.rangos-title {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #9e2a2b;
+  text-shadow: 0 0 15px rgba(158, 42, 43, 0.6);
+  margin-bottom: 15px;
+}
+
+.rangos-subtitle {
+  font-size: 1.2rem;
+  color: #d4c2ad;
+  opacity: 0.8;
+}
+
+/* 🔹 Grid de rangos */
+.rangos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: stretch;
+  z-index: 2;
+  position: relative;
+}
+
+/* 🔹 Card RPG / estilo japonés */
+.rango-card {
+  background: linear-gradient(160deg, #111826, #0b0f16);
+  border: 2px solid rgba(212, 194, 173, 0.3);
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.rango-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(158, 42, 43, 0.4),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.rango-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: #9e2a2b;
+  box-shadow: 0 25px 60px rgba(158, 42, 43, 0.4);
+}
+
+.rango-card:hover::before {
+  opacity: 1;
+}
+
+/* 🔹 Imagen del rango */
+.rango-img-container {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #2b3d4f, #0b0f16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.rango-img-container img {
+  width: 70%;
+  height: auto;
+  image-rendering: pixelated; /* efecto Minecraft */
+  filter: drop-shadow(0 0 12px rgba(212, 194, 173, 0.6));
+}
+
+/* 🔹 Nombre y descripción */
+.rango-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #9e2a2b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rango-desc {
+  font-size: 0.95rem;
+  color: #d4c2ad;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* 🔹 Responsive */
+@media screen and (max-width: 768px) {
+  .rangos-title {
+    font-size: 2.2rem;
+  }
+
+  .rangos-subtitle {
+    font-size: 1rem;
+  }
+
+  .rango-card {
+    padding: 20px;
+  }
+
+  .rango-img-container {
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .rangos-grid {
+    gap: 25px;
+  }
+
+  .rango-name {
+    font-size: 1.4rem;
+  }
+
+  .rango-desc {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* 🎨 PALETA JAPONESA */
+:root {
+  --kurenai: #9E2A2B;   /* rojo torii */
+  --konjo: #2B3D4F;     /* azul índigo */
+  --kugui: #D4C2AD;     /* arena washi */
+  --uguisu: #6B705C;    /* verde matcha */
+  --sumi: #1A1A1A;      /* negro sumi */
+}
+
+body {
+  margin: 0;
+  background: var(--sumi);
+  color: var(--kugui);
+  font-family: "Orbitron", sans-serif;
+  overflow-x: hidden;
+}
+
+/* 🌸 Sakura */
+.sakura-petal {
+  position: fixed;
+  top: -20px;
+  width: 12px;
+  height: 12px;
+  background: var(--kurenai);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: fall linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* ===== HERO ===== */
+.sensei-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.sensei-hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: 
+    linear-gradient(120deg, rgba(26,26,26,0.85), rgba(43,61,79,0.7)),
+    url("/home/user/MinecraftJapon/minecraft/src/Pages/Rangos/banner-peq.png");
+
+  background-size: contain; /* 👈 mejor para banners panorámicos */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  width: 100%;
+  height: 100%;
+
+  filter: blur(1px);
+}
+
+.sensei-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(158,42,43,0.4), transparent 70%);
+}
+
+.sensei-hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sensei-hero h1 {
+  font-size: 5rem;
+  letter-spacing: 6px;
+  color: var(--kugui);
+}
+
+.sensei-hero h1 span {
+  color: var(--kurenai);
+  text-shadow: 0 0 25px var(--kurenai);
+}
+
+.sensei-hero p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: var(--uguisu);
+}
+
+/* ===== BUTTON ===== */
+.sensei-btn-main {
+  background: linear-gradient(45deg, var(--kurenai), var(--konjo));
+  border: none;
+  padding: 14px 40px;
+  border-radius: 40px;
+  font-size: 1rem;
+  color: var(--kugui);
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(158,42,43,0.5);
+}
+
+.sensei-btn-main:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(158,42,43,0.8);
+}
+
+.sensei-btn-main.big {
+  font-size: 1.3rem;
+  padding: 18px 55px;
+}
+
+/* ===== INTRO ===== */
+.sensei-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 100px 10%;
+  align-items: center;
+}
+
+.sensei-intro-text h2 {
+  font-size: 2.5rem;
+  color: var(--kurenai);
+  margin-bottom: 20px;
+}
+
+.sensei-intro-text p {
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+.sensei-intro-img {
+  height: 380px;
+  border-radius: 20px;
+  background: url("https://images.unsplash.com/photo-1603898037225-12d89f1b9e7c?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--kurenai);
+  box-shadow: 0 0 35px rgba(158,42,43,0.5);
+}
+
+/* ===== SECTIONS ===== */
+.sensei-section {
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.sensei-section.dark {
+  background: linear-gradient(180deg, var(--sumi), var(--konjo));
+}
+
+.sensei-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  color: var(--kugui);
+}
+
+/* ===== CARDS ===== */
+.sensei-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.sensei-card {
+  background: rgba(212,194,173,0.05);
+  border: 1px solid rgba(158,42,43,0.4);
+  padding: 25px;
+  border-radius: 16px;
+  transition: 0.4s;
+  backdrop-filter: blur(10px);
+}
+
+.sensei-card:hover {
+  transform: translateY(-12px) scale(1.04);
+  border-color: var(--kurenai);
+  box-shadow: 0 0 30px rgba(158,42,43,0.6);
+}
+
+/* ===== MINECRAFT BOX ===== */
+.minecraft-box {
+  background: var(--sumi);
+  border: 2px solid var(--kurenai);
+  padding: 20px 30px;
+  display: inline-block;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: var(--kugui);
+}
+
+.minecraft-box span {
+  color: gold;
+}
+
+/* ===== PRICE ===== */
+.sensei-price-section {
+  padding: 120px 10%;
+  background: radial-gradient(circle, var(--konjo), var(--sumi));
+  text-align: center;
+}
+
+.sensei-price-card {
+  display: inline-block;
+  background: rgba(26,26,26,0.8);
+  border: 2px solid var(--kurenai);
+  padding: 50px 70px;
+  border-radius: 22px;
+  box-shadow: 0 0 45px rgba(158,42,43,0.5);
+}
+
+.sensei-price {
+  font-size: 3.2rem;
+  color: var(--kugui);
+  margin: 15px 0;
+}
+
+/* ===== CTA ===== */
+.sensei-cta {
+  padding: 120px 10%;
+  text-align: center;
+  background:
+    linear-gradient(120deg, rgba(26,26,26,0.85), rgba(158,42,43,0.6)),
+    url("https://images.unsplash.com/photo-1610878180933-123d2c7a3c6f?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.sensei-cta h2 {
+  font-size: 2.7rem;
+  margin-bottom: 25px;
+  color: var(--kugui);
+}
+
+/* ===== FOOTER ===== */
+.sensei-footer {
+  padding: 30px;
+  text-align: center;
+  background: var(--sumi);
+  border-top: 1px solid var(--kurenai);
+  color: var(--uguisu);
+}
