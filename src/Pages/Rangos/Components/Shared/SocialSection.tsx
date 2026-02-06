@@ -63,7 +63,7 @@ const SocialSection = ({
                         {subtitle}
                     </Typography>
 
-                    <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
+                    <Box sx={{ display: "flex", justifyContent: "center", gap: { xs: 2, md: 4 }, flexWrap: 'wrap' }}>
                         {socials.map((social, index) => (
                             <motion.div
                                 key={social.name}
@@ -76,8 +76,8 @@ const SocialSection = ({
                                 <IconButton
                                     href={social.href}
                                     sx={{
-                                        width: 80,
-                                        height: 80,
+                                        width: { xs: 60, md: 80 },
+                                        height: { xs: 60, md: 80 },
                                         borderRadius: "50%",
                                         border: "1px solid rgba(255,255,255,0.1)",
                                         color: "#fff",

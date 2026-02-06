@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Box, Button, Container, Typography } from '@mui/material';
+import { AppBar, Toolbar, Box, Button, Container, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ const navLinks = [
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false); // Mobile Menu State
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -37,7 +39,49 @@ export default function Header() {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
+        setMobileOpen(false); // Close drawer on click
     };
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', bgcolor: '#0B0B0B', height: '100%', color: 'white', pt: 4 }}>
+            <Typography variant="h6" sx={{ my: 2, color: '#DAA520', fontWeight: 'bold' }}>
+                MINEJP
+            </Typography>
+            <List>
+                {navLinks.map((link) => (
+                    <ListItem key={link.title} disablePadding sx={{ justifyContent: 'center' }}>
+                        <Button
+                            onClick={() => handleNavClick(link.href)}
+                            sx={{ textAlign: 'center', color: 'white', width: '100%', py: 2 }}
+                        >
+                            <ListItemText primary={link.title} primaryTypographyProps={{ fontSize: '1.1rem' }} />
+                        </Button>
+                    </ListItem>
+                ))}
+                <ListItem disablePadding sx={{ justifyContent: 'center', mt: 2 }}>
+                     <Button
+                        onClick={() => { navigate('/login'); setMobileOpen(false); }}
+                        sx={{ color: '#DAA520', width: '80%', border: '1px solid #DAA520' }}
+                    >
+                        Iniciar Sesión
+                    </Button>
+                </ListItem>
+                <ListItem disablePadding sx={{ justifyContent: 'center', mt: 2 }}>
+                     <Button
+                        onClick={() => { navigate('/register'); setMobileOpen(false); }}
+                        variant="contained"
+                        sx={{ bgcolor: '#DAA520', color: 'white', width: '80%', '&:hover': { bgcolor: '#B8860B' } }}
+                    >
+                        Registrarse
+                    </Button>
+                </ListItem>
+            </List>
+        </Box>
+    );
 
     return (
         <AppBar
@@ -54,6 +98,17 @@ export default function Header() {
         >
             <Container maxWidth="xl">
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', height: 80 }}>
+                    {/* LEFT: HAMBURGER (Mobile Only) */}
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { md: 'none' } }}
+                    >
+                        <MenuIcon sx={{ color: isScrolled ? 'white' : '#DAA520' }} />
+                    </IconButton>
+
                     {/* LOGO LEFT */}
                     <Box
                         sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 1 }}
@@ -77,7 +132,7 @@ export default function Header() {
                         </motion.div>
                     </Box>
 
-                    {/* LINKS MIDDLE */}
+                    {/* LINKS MIDDLE (Desktop Only) */}
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
                         {navLinks.map((link) => (
                             <motion.div
@@ -114,8 +169,8 @@ export default function Header() {
                         ))}
                     </Box>
 
-                    {/* AUTH RIGHT */}
-                    <Box sx={{ display: 'flex', gap: 2 }}>
+                    {/* AUTH RIGHT (Desktop Only - Mobile has it in Drawer) */}
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button
                                 onClick={() => navigate('/login')}
@@ -154,6 +209,19 @@ export default function Header() {
                     </Box>
                 </Toolbar>
             </Container>
+
+            {/* MOBILE DRAWER */}
+            <Drawer
+                anchor="left"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                sx={{
+                    display: { xs: 'block', md: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, bgcolor: '#0B0B0B' },
+                }}
+            >
+                {drawer}
+            </Drawer>
         </AppBar>
     );
 }

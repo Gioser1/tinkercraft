@@ -7,7 +7,7 @@ import AnimacionEntrarRangos from './animacion-entrar-rangos';
 import video2 from '../assets/video2.mp4';
 import imgKami from '../../Rangos/assets/kami/img-hero.png';
 import imgDaimyo from '../../Rangos/assets/daimyo/img-daimyo.png';
-import imgShogun from '../../Rangos/Components/Shogun/assets/shogunHero.jpg';
+import imgShogun from '../../Rangos/Components/Shogun/assets/Japanese_emperor_without_202602041459.jpeg';
 import imgSamurai from '../../Rangos/assets/samurai/img-samurai.png';
 import imgSensei from '../../Rangos/assets/sensei/img-sensei.png';
 
@@ -48,7 +48,8 @@ export default function Carousel() {
             alignItems: 'center',
             bgcolor: 'transparent',
             py: 10,
-            position: 'relative'
+            position: 'relative',
+            overflow: 'hidden' // Ensure it doesn't cause scrollbars
         }}>
             {isTransitioning && (
                 <AnimacionEntrarRangos
@@ -62,7 +63,10 @@ export default function Carousel() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '50px'
+                gap: '50px',
+                // Scale down the entire 3D scene on mobile
+                transform: { xs: 'scale(0.65)', md: 'scale(1)' },
+                transition: 'transform 0.3s ease'
             }}>
                 <Box sx={{
                     width: '420px',
@@ -99,7 +103,7 @@ export default function Carousel() {
                     ))}
                 </Box>
 
-                <Box sx={{ display: 'flex', gap: 4, mt: 4 }}>
+                <Box sx={{ display: 'flex', gap: 4, mt: 4, flexDirection: { xs: 'row', md: 'row' } }}>
                     <Button
                         onClick={handlePrev}
                         sx={{

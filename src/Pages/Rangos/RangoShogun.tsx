@@ -11,7 +11,9 @@ import SocialSection from "./Components/Shared/SocialSection";
 import FallingPetals from "./Components/Shared/FallingPetals";
 
 // Shogun Assets
-import shogunHero from "./Components/Shogun/assets/shogunHero.jpg";
+// Shogun Assets
+import shogunVideo from "./Components/Shogun/assets/ShogunVideo.mp4";
+// import shogunHero from "./Components/Shogun/assets/shogunHero.jpg"; // Keeping as backup if needed
 import shogunBg from "./Components/Shogun/assets/Japanese_emperor_without_202602041459.jpeg";
 import ShogunDominio from "./Components/Shogun/assets/ShogunDominio.jpeg";
 import ShogunEstrategia from "./Components/Shogun/assets/ShogunEstrategia.jpeg";
@@ -19,9 +21,6 @@ import ShogunGloria from "./Components/Shogun/assets/ShogunGloria.jpeg";
 import ShogunGuerrero from "./Components/Shogun/assets/ShogunGuerrero.jpeg";
 import ShogunGeneral from "./Components/Shogun/assets/ShogunGeneral.jpeg";
 import ShogunKing from "./Components/Shogun/assets/ShogunKing.jpeg";
-
-// Reusing these for now as placeholders if needed, or just using Shogun assets for everything
-// const PLACEHOLDER_IMG = shogunHero;
 
 const COLORS = {
     pink: "#EE8D9E",
@@ -93,7 +92,7 @@ export default function RangoShogun() {
             <HeroSection
                 title="SHOGUN"
                 subtitle="El Comandante Supremo • 将軍"
-                imageSrc={shogunHero}
+                videoSrc={shogunVideo}
                 buttonText="ÚNETE AL IMPERIO"
                 primaryColor={COLORS.heroBg}
                 accentColor={COLORS.accent}
